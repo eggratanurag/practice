@@ -3,12 +3,15 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import {LocalContextProvider} from './context/index.tsx';
+import { BrowserRouter } from 'react-router-dom';
 
 
 createRoot(document.getElementById('root')!).render(
   // <StrictMode>
-  <LocalContextProvider>
-    <App />
-  </LocalContextProvider>
+  <BrowserRouter>
+    <LocalContextProvider>
+      <App />
+    </LocalContextProvider>
+  </BrowserRouter>
   // </StrictMode>,
 )

@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import './App.css'
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router";
 import UserCallBack from './pages/useCallback/index'
 import UseMemo from './pages/useMemo'
 import AgeCalculator from './pages/ageCalculator'
@@ -19,6 +19,7 @@ import AnimateSequence from "./pages/animateSequence/index"
 import ScrollBasedAnimation from "./pages/scrollBasedAnimation/index"
 import NothingHero from "./pages/nothingHero/index"
 import SilverButton from "./pages/silverButton/index"
+import Protection from "./pages/protection/index"
 
 const pages = [
   { path: '/', name: 'Home', element: <Home /> },
@@ -44,18 +45,32 @@ const pages = [
 
 
 function App() {
+  const navigate = useNavigate()
+  const pathName = useLocation().pathname
+
+  const handleAuth = useCallback(() => {
+     const key = localStorage.getItem('key')
+     if(!key && key !== "helloKitty" && pathName === "/") {
+      navigate('/protection')
+     } 
+  }, [navigate])
+
+  useEffect(() => {
+    handleAuth()
+  }, [])
 
 
 
   return (
-    <BrowserRouter>
+    <>
       <Toast />
       <Routes>
         {pages.map((item, index) => (
           <Route key={index} path={item.path} element={item.element} />
         ))}
+        <Route path={"/protection"} element={<Protection />} />
       </Routes>
-    </BrowserRouter>
+    </>
   )
 }
 
