@@ -34,8 +34,8 @@ const SilverButton = () => {
                     </text>
                 </svg>
 
-                <div className="w-[60px] h-[60px]  shadow-[inset_0_0_10px_rgba(0,0,0,0.4),inset_0_0_10px_rgba(255,255,255,0.3)] rounded-full overflow-hidden flex items-center justify-center bg-red-300 animate-[spin_10s_linear_infinite] [transform-origin:50%_50%]">
-                   <img src={metal} alt="metal" className="w-[110%] h-[110%] inset-0 rounded-full object-cover object-center" />
+                <div className="w-[60px] h-[60px]  shadow-[var(--carved-shadow)] rounded-full overflow-hidden flex items-center justify-center bg-white ">
+                   <img src={metal} alt="metal" className="w-[100%] h-[100%] inset-0 rounded-full object-cover object-center" />
                 </div>
                 <div className="shineOverlay absolute h-full w-full" ></div>
                 </div>
