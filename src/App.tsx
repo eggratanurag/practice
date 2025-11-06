@@ -49,8 +49,8 @@ function App() {
   const pathName = useLocation().pathname
 
   const handleAuth = useCallback(() => {
-     const key = localStorage.getItem('key')
-     if(!key && key !== "helloKitty" && pathName === "/") {
+     const key = localStorage.getItem(import.meta.env.VITE_HOME_PAGE_PROTECTION_KEY)
+     if(!key && key !== import.meta.env.VITE_HOME_PAGE_PROTECTION_CODE && pathName === "/") {
       navigate('/protection')
      } 
   }, [navigate])

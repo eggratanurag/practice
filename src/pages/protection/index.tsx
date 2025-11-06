@@ -11,7 +11,7 @@ const Protection = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if(password === import.meta.env.VITE_HOME_PAGE_PROTECTION_CODE) {
-            localStorage.setItem('key', 'helloKitty')
+            localStorage.setItem(import.meta.env.VITE_HOME_PAGE_PROTECTION_KEY, import.meta.env.VITE_HOME_PAGE_PROTECTION_CODE)
             navigate('/')
         } else {
             setError("Invalid password")
